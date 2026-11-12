@@ -1,0 +1,156 @@
+{
+  "boy": "赵瑞轩",
+  "girl": "高咏",
+  "loveDate": "2023-07-14T22:00:00",
+  "marriageDate": "",
+  "siteName": "拾光",
+  "siteUrl": "https://shiguang.example.com",
+  "siteLocale": "zh-CN",
+  "milestones": [
+    {
+      "date": "2023-07-14T22:00:00",
+      "label": "在一起",
+      "icon": "❦",
+      "story": "晚上十点，我们把这一天定成了纪念日。之后所有的计时都从这里开始。"
+    },
+    {
+      "date": "2024-07-14",
+      "label": "一周年",
+      "icon": "✦",
+      "story": "第一年过完，日子其实没什么变化，只是习惯里多了一个人。这条留着，等你来改。"
+    },
+    {
+      "date": "2025-07-14",
+      "label": "两周年",
+      "icon": "☾",
+      "story": "第二年的事，想好了再写进来。"
+    },
+    {
+      "date": "2026-07-14",
+      "label": "三周年",
+      "icon": "✧",
+      "story": "第三年，开始认真讨论以后：住哪儿，怎么过，什么时候。"
+    }
+  ],
+  "quotes": [
+    "日子很普通，只是你在",
+    "把漫长的以后，分给你一半",
+    "从十点开始的那一天",
+    "我们不赶时间，慢慢走"
+  ],
+  "photos": [
+    {
+      "url": "/photos/demo-01.jpg",
+      "caption": "读过的书"
+    },
+    {
+      "url": "/photos/demo-02.jpg",
+      "caption": "一起走过的那条街"
+    },
+    {
+      "url": "/photos/demo-03.jpg",
+      "caption": "桌上的两只杯子"
+    },
+    {
+      "url": "/photos/demo-04.jpg",
+      "caption": "黄昏时的车站"
+    }
+  ],
+  "timers": [
+    {
+      "label": "在一起",
+      "icon": "❦",
+      "date": "2023-07-14T22:00:00"
+    }
+  ],
+  "anniversaries": [
+    {
+      "label": "在一起纪念日",
+      "icon": "❦",
+      "date": "2023-07-14",
+      "easterEggTemplates": {
+        "soon": "还有 {gap} 天就是{displayLabel}，今年想怎么过？",
+        "today": "今天是{displayLabel}，把这一天记下来吧。",
+        "celebrate": "{displayLabel}快乐。愿你一直都在。"
+      }
+    }
+  ],
+  "anniversaryCountdownThreshold": 15,
+  "wishes": [
+    {
+      "text": "一起看一次海",
+      "done": false
+    },
+    {
+      "text": "学会做对方爱吃的那道菜",
+      "done": true
+    },
+    {
+      "text": "把这一年的照片做成一本相册",
+      "done": false
+    },
+    {
+      "text": "在同一个城市看一次雪",
+      "done": false
+    }
+  ],
+  "letter": {
+    "enabled": true,
+    "title": "一封没有寄出的信",
+    "salutation": "写给 赵瑞轩：",
+    "paragraphs": [
+      "写信这件事，比发消息慢很多。",
+      "所以我把它留在这里，等你哪天翻到。",
+      "从 2023 年 7 月 14 日晚上十点起，日子有了另一套算法。",
+      "我不太会说漂亮的话，只想告诉你：饭我做，灯我留，路我们一起走。"
+    ],
+    "signature": "—— 高咏",
+    "dateLabel": "二〇二六年 冬",
+    "typeSpeed": 42
+  },
+  "easterEgg": {
+    "enabled": true,
+    "keywords": [
+      "love",
+      "永远"
+    ],
+    "title": "被你找到了",
+    "message": "这句话只写给愿意慢慢翻页的人：从 2023 年 7 月 14 日 22:00 开始，一直有效。",
+    "onDoubleClickNames": true
+  },
+  "music": {
+    "enabled": false,
+    "autoPlay": false,
+    "tracks": []
+  },
+  "sections": {
+    "todaySummary": true,
+    "stats": true,
+    "timers": true,
+    "timeline": true,
+    "letter": true,
+    "anniversary": true,
+    "wishes": true,
+    "photoWall": true,
+    "themeToggle": true,
+    "share": true
+  },
+  "sectionOrder": [
+    "todaySummary",
+    "timers",
+    "timeline",
+    "letter",
+    "anniversary",
+    "stats",
+    "wishes"
+  ],
+  "defaultTheme": "light",
+  "privacy": {
+    "privateMode": true,
+    "noIndex": true
+  },
+  "passwordConfig": {
+    "enabled": false,
+    "password": ""
+  }
+}
