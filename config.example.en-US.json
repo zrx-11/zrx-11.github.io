@@ -1,0 +1,139 @@
+{
+  "boy": "Aster",
+  "girl": "Luna",
+  "loveDate": "2024-05-20",
+  "marriageDate": "",
+  "siteName": "Shiguang",
+  "siteUrl": "https://shiguang.example.com",
+  "siteLocale": "en-US",
+  "milestones": [
+    {
+      "date": "2024-05-20",
+      "label": "The day we met",
+      "icon": "✦",
+      "story": "The room was loud, but the world went quiet when you spoke."
+    },
+    {
+      "date": "2024-12-31",
+      "label": "New Year",
+      "icon": "☾",
+      "story": "At zero, you whispered happy new year — louder than fireworks."
+    },
+    {
+      "date": "2025-05-20",
+      "label": "One year",
+      "icon": "❦",
+      "story": "We laid the year's photos on the bed and realised we smile alike now."
+    }
+  ],
+  "quotes": [
+    "Ordinary days, only with you",
+    "Half of my long future, kept for you",
+    "Letters are slow, so is loving you"
+  ],
+  "photos": [
+    {
+      "url": "/photos/demo-01.jpg",
+      "caption": "The book"
+    },
+    {
+      "url": "/photos/demo-02.jpg",
+      "caption": "Our street"
+    },
+    {
+      "url": "/photos/demo-03.jpg",
+      "caption": "Two cups"
+    },
+    {
+      "url": "/photos/demo-04.jpg",
+      "caption": "The platform"
+    }
+  ],
+  "timers": [
+    {
+      "label": "Together",
+      "icon": "❦",
+      "date": "2024-05-20"
+    },
+    {
+      "label": "Known you",
+      "icon": "✦",
+      "date": "2024-04-12"
+    }
+  ],
+  "anniversaries": [
+    {
+      "label": "Anniversary",
+      "icon": "❦",
+      "date": "2024-05-20"
+    }
+  ],
+  "anniversaryCountdownThreshold": 15,
+  "wishes": [
+    {
+      "text": "See the sea together",
+      "done": false
+    },
+    {
+      "text": "Learn your favourite dish",
+      "done": true
+    }
+  ],
+  "letter": {
+    "enabled": true,
+    "title": "A letter never sent",
+    "salutation": "Dear Luna,",
+    "paragraphs": [
+      "Writing takes longer than texting.",
+      "So I keep it here, for the day you find it.",
+      "I am not good with pretty words: I cook, I keep the light on, and we walk the road together."
+    ],
+    "signature": "— Aster",
+    "dateLabel": "Spring, 2025",
+    "typeSpeed": 42
+  },
+  "easterEgg": {
+    "enabled": true,
+    "keywords": [
+      "love"
+    ],
+    "title": "You found it",
+    "message": "This line is only for whoever reads slowly. Thank you for staying.",
+    "onDoubleClickNames": true
+  },
+  "music": {
+    "enabled": false,
+    "autoPlay": false,
+    "tracks": []
+  },
+  "sections": {
+    "todaySummary": true,
+    "stats": true,
+    "timers": true,
+    "timeline": true,
+    "letter": true,
+    "anniversary": true,
+    "wishes": true,
+    "photoWall": true,
+    "themeToggle": true,
+    "share": true
+  },
+  "sectionOrder": [
+    "todaySummary",
+    "timers",
+    "timeline",
+    "letter",
+    "anniversary",
+    "stats",
+    "wishes"
+  ],
+  "defaultTheme": "light",
+  "privacy": {
+    "privateMode": true,
+    "noIndex": true
+  },
+  "passwordConfig": {
+    "enabled": false,
+    "password": ""
+  }
+}

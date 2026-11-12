@@ -1,0 +1,22 @@
+---
+import type { Config } from '../config';
+import type { LocaleMessages } from '../i18n/utils';
+import { DEFAULT_MESSAGES } from '../i18n/utils';
+
+interface Props {
+  config: Config;
+  messages?: LocaleMessages;
+}
+
+const { config, messages } = Astro.props;
+const startYear = (config.loveDate || '').split('-')[0];
+const siteName = config.siteName?.trim() || '拾光';
+const madeWithLove = messages?.footer?.madeWithLove || DEFAULT_MESSAGES.footer.madeWithLove;
+const range = startYear ? `${startYear} — ${madeWithLove}` : madeWithLove;
+---
+
+<footer class="footer-main text-center text-white/50 text-xs sm:text-sm tracking-wider select-none mt-4 flex flex-col items-center gap-2">
+  <p class="footer-mark">✧</p>
+  <p>{range}</p>
+  <p class="footer-sign">{siteName}</p>
+</footer>

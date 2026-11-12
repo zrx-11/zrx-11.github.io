@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="拾光">
+  <rect x="3" y="3" width="94" height="94" rx="8" fill="#f6f1e7" stroke="#b04a3c" stroke-width="3"/>
+  <rect x="9" y="9" width="82" height="82" rx="5" fill="none" stroke="#b04a3c" stroke-width="1" opacity="0.45"/>
+  <path d="M26 38h48v30H26z" fill="none" stroke="#b08554" stroke-width="2.2"/>
+  <path d="M26 38l24 17 24-17" fill="none" stroke="#b08554" stroke-width="2.2"/>
+  <path d="M50 72c-2.6-2.4-7-5.4-7-9.2 0-2.6 1.9-4.4 4.2-4.4 1.8 0 2.6 1.1 2.8 2 0.2-0.9 1-2 2.8-2 2.3 0 4.2 1.8 4.2 4.4 0 3.8-4.4 6.8-7 9.2z" fill="#b04a3c"/>
+</svg>

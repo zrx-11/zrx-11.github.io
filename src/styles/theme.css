@@ -1,0 +1,565 @@
+/* ═══════════════════════════════════════
+   拾光 · 主题层：信笺、朱砂与香槟金
+   在 components.css 之后加载，只做覆盖与新增
+   ═══════════════════════════════════════ */
+
+/* ── 字体 ── */
+.font-cursive {
+  font-family: var(--latin);
+  font-weight: 600;
+}
+
+.font-hand {
+  font-family: var(--hand);
+  letter-spacing: 0.08em;
+}
+
+/* ── 首屏 ── */
+.hero-names {
+  font-family: var(--serif);
+  background: linear-gradient(120deg, #fbf6ec 10%, var(--gilt-soft) 60%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+[data-theme='light'] .hero-names {
+  background: linear-gradient(120deg, var(--ink) 8%, #7c3b30 55%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero-heart {
+  font-size: 0.55em !important;
+  vertical-align: middle;
+  -webkit-text-fill-color: var(--accent);
+  text-shadow: none;
+  animation: none;
+  opacity: 0.85;
+  margin: 0 0.15em !important;
+}
+
+#motto,
+.hero-motto {
+  font-family: var(--hand);
+  color: rgba(211, 176, 124, 0.75);
+  letter-spacing: 0.16em;
+}
+
+[data-theme='light'] #motto,
+[data-theme='light'] .hero-motto {
+  color: rgba(124, 59, 48, 0.7);
+}
+
+/* ── 区块标题：两侧细线 + 朱砂菱形 ── */
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: rgba(211, 176, 124, 0.92);
+  text-indent: 0.34em;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+[data-theme='light'] .section-title {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  opacity: 0.28;
+}
+
+.section-title::after {
+  background: linear-gradient(270deg, transparent, currentColor);
+}
+
+/* ── 卡片：纸片而不是玻璃 ── */
+.glass {
+  background: rgba(246, 241, 231, 0.045);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(211, 176, 124, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme='light'] .glass {
+  background: rgba(255, 253, 247, 0.86);
+  border: 1px solid rgba(42, 36, 32, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 14px 34px rgba(74, 58, 44, 0.1), 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+}
+
+.glass-gold {
+  border-radius: 6px;
+}
+
+/* ── 页脚 ── */
+.footer-mark {
+  color: var(--gilt);
+  opacity: 0.7;
+  letter-spacing: 0.3em;
+}
+
+.footer-sign {
+  font-family: var(--latin);
+  letter-spacing: 0.28em;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+/* ── 通用强调色工具类 ── */
+.text-accent-soft {
+  color: rgba(211, 176, 124, 0.65);
+}
+
+[data-theme='light'] .text-accent-soft {
+  color: rgba(124, 59, 48, 0.68) !important;
+}
+
+/* ═══════════════════════════════════════
+   一封情书
+   ═══════════════════════════════════════ */
+.letter-card {
+  position: relative;
+  padding: 26px 22px 20px;
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.94), rgba(246, 240, 229, 0.9));
+  border: 1px solid rgba(42, 36, 32, 0.14);
+  box-shadow: 0 22px 44px rgba(42, 36, 32, 0.14);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+[data-theme='dark'] .letter-card {
+  background: linear-gradient(180deg, #221c17, #1a1512);
+  border-color: rgba(211, 176, 124, 0.22);
+  color: #efe6d7;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.letter-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.letter-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.letter-salutation {
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  color: var(--accent-deep);
+  letter-spacing: 0.06em;
+}
+
+[data-theme='dark'] .letter-salutation {
+  color: var(--accent-light);
+}
+
+.letter-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(176, 74, 60, 0.4);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 1rem;
+  transform: rotate(-8deg);
+  opacity: 0.8;
+}
+
+.letter-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 8.5rem;
+}
+
+.letter-line {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 2.05;
+  text-align: justify;
+  letter-spacing: 0.03em;
+  text-indent: 2em;
+  min-height: 2.05em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.letter-line.is-typing::after {
+  content: '▍';
+  margin-left: 0.1em;
+  color: var(--accent);
+  animation: letterCursor 1s steps(2, start) infinite;
+  font-size: 0.85em;
+  opacity: 0.65;
+}
+
+@keyframes letterCursor {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.letter-card-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.letter-signature {
+  font-family: var(--hand);
+  font-size: 1.2rem;
+  color: var(--accent-deep);
+  opacity: 0.9;
+}
+
+[data-theme='dark'] .letter-signature {
+  color: var(--accent-light);
+}
+
+.letter-date {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+}
+
+[data-theme='dark'] .letter-date {
+  color: rgba(233, 220, 200, 0.5);
+}
+
+.letter-replay {
+  margin-top: 1.2rem;
+  padding: 0.34rem 0.9rem;
+  border: 1px solid rgba(176, 74, 60, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent-deep);
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.letter-card.is-complete .letter-replay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-replay:hover {
+  background: rgba(176, 74, 60, 0.08);
+  border-color: rgba(176, 74, 60, 0.55);
+}
+
+[data-theme='dark'] .letter-replay {
+  color: var(--accent-light);
+}
+
+/* ═══════════════════════════════════════
+   隐藏彩蛋
+   ═══════════════════════════════════════ */
+.easter-egg {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.easter-egg.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.easter-egg-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 18, 15, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.easter-egg-card {
+  position: relative;
+  max-width: 26rem;
+  width: 100%;
+  padding: 2.2rem 1.8rem 1.6rem;
+  text-align: center;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fbf7ee, #f1e9db);
+  border: 1px solid rgba(176, 133, 84, 0.5);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  color: var(--ink);
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.easter-egg.is-open .easter-egg-card {
+  transform: translateY(0) scale(1);
+}
+
+.easter-egg-mark {
+  display: block;
+  color: var(--accent);
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.7rem;
+  opacity: 0.75;
+}
+
+.easter-egg-title {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--accent-deep);
+  margin-bottom: 0.8rem;
+}
+
+.easter-egg-message {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 2;
+  color: #4a4038;
+  letter-spacing: 0.03em;
+}
+
+.easter-egg-close {
+  margin-top: 1.4rem;
+  padding: 0.36rem 1.3rem;
+  border: 1px solid rgba(176, 74, 60, 0.4);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent-deep);
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.easter-egg-close:hover {
+  background: rgba(176, 74, 60, 0.08);
+}
+
+#heroSection.is-secret {
+  cursor: default;
+}
+
+/* ── 移动端 ── */
+@media (max-width: 640px) {
+  .letter-card {
+    padding: 22px 16px 16px;
+  }
+
+  .letter-line {
+    font-size: 0.94rem;
+    line-height: 1.95;
+  }
+
+  .section-title {
+    letter-spacing: 0.24em;
+    gap: 0.6rem;
+  }
+}
+
+/* ── 首屏纪年 ── */
+.hero-since {
+  font-family: var(--latin);
+  font-size: 0.68rem;
+  letter-spacing: 0.46em;
+  text-indent: 0.46em;
+  text-transform: uppercase;
+  color: rgba(211, 176, 124, 0.8);
+  margin-bottom: 0.9rem;
+}
+
+[data-theme='light'] .hero-since {
+  color: rgba(124, 59, 48, 0.65);
+}
+
+/* ── 卡片内文字：加深到可读的墨色 ── */
+.letter-line {
+  color: #3b332b;
+  font-weight: 400;
+}
+
+[data-theme='dark'] .letter-line {
+  color: #e9dfd0;
+}
+
+.letter-body {
+  min-height: 10rem;
+}
+
+/* ── 今日摘要 ── */
+.today-summary-primary {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.today-summary-cta {
+  align-self: center;
+  margin-top: 0.35rem;
+  padding: 0.4rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(176, 74, 60, 0.42);
+  background: rgba(255, 253, 247, 0.6);
+  color: var(--accent-deep);
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.today-summary-cta:hover {
+  background: rgba(176, 74, 60, 0.1);
+  border-color: rgba(176, 74, 60, 0.6);
+  transform: translateY(-1px);
+}
+
+[data-theme='dark'] .today-summary-cta {
+  background: transparent;
+  color: var(--accent-light);
+  border-color: rgba(200, 106, 90, 0.45);
+}
+
+/* ── 愿望清单：细线方格 ── */
+.wish-list {
+  gap: 0.55rem;
+}
+
+/* ── 数字区：标签更克制 ── */
+.stats-label,
+.stats-note {
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+}
+
+/* ── 纪念日卡片：日期更淡 ── */
+.anniversary-date {
+  opacity: 0.72;
+}
+
+/* ── 时间线：保证节点可读，窄屏横向滚动 ── */
+.timeline-node {
+  min-width: 104px;
+}
+
+.timeline-track {
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 0.25rem;
+}
+
+.timeline-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── 只有一条纪念日时占满一行，避免左侧半张卡 ── */
+.anniversary-cards > :only-child {
+  grid-column: 1 / -1;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* ── 单个计时器时不要拉满整行 ── */
+.timers-row > :only-child {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+/* ── 提示条：手机上移到下方，避免压住名字 ── */
+@media (max-width: 640px) {
+  /* 带时间的日期在窄屏不折行，靠横向滚动阅读 */
+  .timeline-node {
+    min-width: 96px;
+  }
+
+  .timeline-date {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .app-toast {
+    top: auto;
+    bottom: 96px;
+    max-width: calc(100vw - 40px);
+    font-size: 0.82rem;
+    padding: 10px 16px;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+  }
+
+  .app-toast.show {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* ── 深色下的可读性补偿：次要文字提亮，主数字提亮 ── */
+[data-theme='dark'] {
+  --accent: #c25a4c;
+  --accent-light: #d97d6d;
+  --accent-deep: #e09a86;
+  --gilt: #c9a173;
+}
+
+[data-theme='dark'] .text-white\/50,
+[data-theme='dark'] .text-white\/40,
+[data-theme='dark'] .text-white\/30 {
+  color: rgba(235, 224, 207, 0.55) !important;
+}
+
+[data-theme='dark'] .text-white\/60 {
+  color: rgba(240, 231, 216, 0.78) !important;
+}
+
+[data-theme='dark'] .text-white\/90 {
+  color: rgba(246, 239, 226, 0.92) !important;
+}
+
+[data-theme='dark'] .glass {
+  background: rgba(34, 27, 22, 0.72);
+  border-color: rgba(201, 161, 115, 0.22);
+}
+
+[data-theme='dark'] .stats-label,
+[data-theme='dark'] .stats-note,
+[data-theme='dark'] .timer-caption {
+  color: rgba(235, 224, 207, 0.58);
+}

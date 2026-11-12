@@ -1,0 +1,202 @@
+/* ═══════════════════════════════════════
+   拾光 · 主样式（信笺纸感）
+   ═══════════════════════════════════════ */
+
+:root {
+  /* 朱砂 */
+  --accent: #b04a3c;
+  --accent-light: #c86a5a;
+  --accent-deep: #8e3327;
+  --accent-glow: rgba(176, 74, 60, 0.4);
+  /* 香槟金 */
+  --gilt: #b08554;
+  --gilt-soft: #d3b07c;
+  --gilt-glow: rgba(176, 133, 84, 0.3);
+  /* 纸与墨 */
+  --ink: #2a2420;
+  --ink-soft: #6b6058;
+  --ink-faint: #a79f96;
+  --paper: #f6f1e7;
+  --paper-2: #efe8da;
+  --paper-line: rgba(42, 36, 32, 0.12);
+  --night: #191411;
+  --night-2: #221b16;
+  --serif: 'Noto Serif SC', 'Songti SC', 'SimSun', '宋体', 'Source Han Serif SC', 'Noto Serif CJK SC', 'AR PL UMing CN', Georgia, serif;
+  --hand: 'Ma Shan Zheng', 'Kaiti SC', 'STKaiti', 'KaiTi', '楷体', cursive;
+  --latin: 'Cormorant Garamond', 'Times New Roman', serif;
+  --section-gap: 2.4rem;
+}
+
+/* Tailwind v4 使用级联层：自定义 reset 需放入 @layer base，
+   否则会覆盖 utility 类（如 px-4 py-8）的 padding */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font-family: var(--serif);
+  background-color: var(--night);
+  background-image:
+    radial-gradient(120% 80% at 12% -10%, rgba(176, 133, 84, 0.16), transparent 60%),
+    radial-gradient(90% 70% at 100% 8%, rgba(176, 74, 60, 0.12), transparent 62%);
+  color: #f3ece1;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+[data-theme='light'] body {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(120% 70% at 8% -12%, rgba(176, 133, 84, 0.14), transparent 58%),
+    radial-gradient(80% 60% at 104% 4%, rgba(176, 74, 60, 0.08), transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(42, 36, 32, 0.035) 0px,
+      rgba(42, 36, 32, 0.03) 1px,
+      transparent 1px,
+      transparent 34px
+    );
+  color: var(--ink);
+  /* 纸纹：极淡的横线，模拟信笺 */
+}
+
+[data-theme='light'] .glass {
+  background: rgba(255, 255, 255, 0.85);
+  /* 提高白底不透明度 */
+  border-color: rgba(176, 74, 60, 0.12);
+  box-shadow: 0 4px 16px rgba(214, 143, 168, 0.08);
+  /* 增加柔和阴影 */
+}
+
+[data-theme='light'] .glass-gold {
+  background: rgba(176, 133, 84, 0.1);
+  border-color: rgba(176, 133, 84, 0.2);
+  box-shadow: 0 4px 16px rgba(215, 185, 0, 0.1);
+}
+
+[data-theme='light'] .anniversary-soon {
+  border-color: rgba(255, 165, 0, 0.4) !important;
+  background: rgba(176, 133, 84, 0.15) !important;
+}
+
+[data-theme='light'] .hero-names {
+  background: linear-gradient(135deg, #2a2420 20%, var(--accent-deep) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme='light'] .section-title {
+  color: #9a4a3c;
+  /* 更显著 */
+  font-weight: 600;
+}
+
+[data-theme='light'] .stats-label,
+[data-theme='light'] .stats-note,
+[data-theme='light'] .text-white\/10,
+[data-theme='light'] .text-white\/30,
+[data-theme='light'] .text-white\/40,
+[data-theme='light'] .text-white\/50 {
+  color: #6b6058 !important;
+  /* 次要文字色 */
+}
+
+[data-theme='light'] .today-summary-primary {
+  color: #2f2a24;
+}
+
+[data-theme='light'] .today-summary-secondary {
+  color: #665a52;
+}
+
+[data-theme='light'] .today-summary-cta {
+  color: #7d3a30;
+  border-color: rgba(176, 74, 60, 0.45);
+  background: linear-gradient(135deg, rgba(176, 74, 60, 0.18), rgba(142, 51, 39, 0.12));
+}
+
+[data-theme='light'] .share-preview-subtitle {
+  color: #6f5a63;
+}
+
+[data-theme='light'] .share-preview-close {
+  color: #5f4a54;
+  border-color: rgba(77, 53, 63, 0.16);
+  background: rgba(77, 53, 63, 0.08);
+}
+
+[data-theme='light'] .share-preview-image-wrap {
+  border-color: rgba(77, 53, 63, 0.14);
+  background: rgba(77, 53, 63, 0.04);
+}
+
+[data-theme='light'] .text-white\/60,
+[data-theme='light'] .text-white\/90 {
+  color: #3d3732 !important;
+  /* 主要文字色，略浅于 body 色 */
+}
+
+[data-theme='light'] .text-pink-200\/60,
+[data-theme='light'] .text-pink-300\/50,
+[data-theme='light'] .text-pink-300\/70 {
+  color: #9a4a3c !important;
+}
+
+[data-theme='light'] .footer-main,
+[data-theme='light'] .footer-main p {
+  color: #6a5f57 !important;
+  /* 页脚文字色 */
+}
+
+.footer-main a {
+  color: inherit;
+}
+
+.footer-main a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme='light'] .footer-main a:hover {
+  color: #4a4038 !important;
+}
+
+[data-theme='light'] .wish-text {
+  color: #2a2420;
+  line-height: 1.6;
+}
+
+[data-theme='light'] .wish-item.done .wish-text {
+  color: #a79f96;
+}
+
+[data-theme='light'] .story-card .story-close,
+[data-theme='light'] .photo-wall-close {
+  background: rgba(45, 35, 39, 0.08);
+  color: #2a2420;
+}
+
+[data-theme='light'] .story-card .story-close:hover,
+[data-theme='light'] .photo-wall-close:hover {
+  background: rgba(45, 35, 39, 0.12);
+}
+
+[data-theme='light'] .story-card p,
+[data-theme='light'] .photo-wall-title {
+  color: #2a2420 !important;
+  line-height: 1.8;
+  /* 增强阅读性 */
+}
+
+[data-theme='light'] #loader {
+  background: #f6f1e7;
+}
+
+[data-theme='light'] .loader-label {
+  color: #6b6058;
+}

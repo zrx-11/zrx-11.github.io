@@ -1,0 +1,107 @@
+---
+import type { Config } from '../config';
+
+interface Props {
+  config: Config;
+}
+
+const { config } = Astro.props;
+const egg = config.easterEgg;
+const enabled = egg?.enabled !== false && !!egg?.message;
+const payload = {
+  keywords: (egg?.keywords ?? []).map((word) => word.trim().toLowerCase()).filter(Boolean),
+  title: egg?.title || '被你找到了',
+  message: egg?.message || '',
+  onDoubleClickNames: egg?.onDoubleClickNames !== false,
+};
+---
+
+{
+  enabled && (
+    <>
+      <script id="easter-egg-payload" type="application/json" set:html={JSON.stringify(payload)} />
+      <div class="easter-egg" id="easterEgg" aria-hidden="true">
+        <div class="easter-egg-backdrop" data-egg-close></div>
+        <div class="easter-egg-card" role="dialog" aria-modal="true" aria-labelledby="easterEggTitle">
+          <span class="easter-egg-mark" aria-hidden="true">
+            ✦
+          </span>
+          <h3 class="easter-egg-title" id="easterEggTitle" />
+          <p class="easter-egg-message" data-egg-message />
+          <button class="easter-egg-close" type="button" data-egg-close>
+            收好
+          </button>
+        </div>
+      </div>
+    </>
+  )
+}
+
+<script>
+  import { readJsonPayload } from '../utils';
+
+  (function initEasterEgg() {
+    const overlay = document.getElementById('easterEgg');
+    if (!(overlay instanceof HTMLElement)) return;
+
+    const payload = readJsonPayload('easter-egg-payload', {
+      keywords: [] as string[],
+      title: '',
+      message: '',
+      onDoubleClickNames: true,
+    });
+
+    if (!payload.message) return;
+
+    const titleEl = overlay.querySelector('#easterEggTitle');
+    const messageEl = overlay.querySelector('[data-egg-message]');
+    if (titleEl) titleEl.textContent = payload.title;
+    if (messageEl) messageEl.textContent = payload.message;
+
+    const keywords = payload.keywords ?? [];
+    let buffer = '';
+    let opened = false;
+
+    function open() {
+      if (opened) return;
+      opened = true;
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function close() {
+      opened = false;
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    overlay.querySelectorAll('[data-egg-close]').forEach((el) => {
+      el.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        close();
+        return;
+      }
+      if (event.key.length !== 1 || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (document.activeElement instanceof HTMLInputElement || document.activeElement instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      buffer = (buffer + event.key.toLowerCase()).slice(-12);
+      if (keywords.some((keyword) => keyword && buffer.endsWith(keyword))) {
+        open();
+        buffer = '';
+      }
+    });
+
+    if (payload.onDoubleClickNames) {
+      const hero = document.getElementById('heroSection');
+      if (hero) {
+        hero.addEventListener('dblclick', open);
+        hero.classList.add('is-secret');
+      }
+    }
+  })();
+</script>

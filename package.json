@@ -1,0 +1,21 @@
+{
+  "name": "shiguang-love-page",
+  "version": "1.0.0",
+  "description": "拾光 — 两个人的纪念日静态站点（Astro 5，配置驱动，可自部署）",
+  "type": "module",
+  "license": "AGPL-3.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "@playform/compress": "^0.2.1",
+    "@tailwindcss/vite": "^4.0.0",
+    "astro": "^5.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

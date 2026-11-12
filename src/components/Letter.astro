@@ -1,0 +1,142 @@
+---
+import type { Config } from '../config';
+import { DEFAULT_MESSAGES, type LocaleMessages } from '../i18n/utils';
+
+interface Props {
+  config: Config;
+  messages?: LocaleMessages;
+}
+
+const { config, messages } = Astro.props;
+const m = messages ?? DEFAULT_MESSAGES;
+const letter = config.letter;
+const paragraphs = letter?.paragraphs?.filter((line) => line.trim()) ?? [];
+const enabled = letter?.enabled !== false && paragraphs.length > 0;
+const speed = letter?.typeSpeed && letter.typeSpeed > 0 ? letter.typeSpeed : 42;
+---
+
+{
+  enabled && (
+    <section class="w-full max-w-xl sm:max-w-2xl lg:max-w-3xl px-2 reveal" id="letterSection">
+      <h2 class="section-title">{m.sections.letter}</h2>
+      <article class="letter-card" data-type-speed={speed}>
+        <header class="letter-card-head">
+          <span class="letter-salutation">{letter?.salutation || ''}</span>
+          <span class="letter-stamp" aria-hidden="true">
+            ♡
+          </span>
+        </header>
+        <div class="letter-body">
+          {paragraphs.map((line, index) => (
+            <p class="letter-line" data-line-index={index} data-text={line}>
+              {line}
+            </p>
+          ))}
+        </div>
+        <footer class="letter-card-foot">
+          <span class="letter-signature">{letter?.signature || ''}</span>
+          <span class="letter-date">{letter?.dateLabel || ''}</span>
+        </footer>
+        <button class="letter-replay" type="button" data-letter-replay>
+          再读一遍
+        </button>
+      </article>
+    </section>
+  )
+}
+
+<script>
+  (function initLetter() {
+    const section = document.getElementById('letterSection');
+    if (!section) return;
+
+    const card = section.querySelector('.letter-card');
+    const lines = Array.from(section.querySelectorAll('.letter-line'));
+    if (!(card instanceof HTMLElement) || lines.length === 0) return;
+
+    const speed = Number(card.dataset.typeSpeed) || 42;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const replayBtn = section.querySelector('[data-letter-replay]');
+    let timers: number[] = [];
+    let started = false;
+
+    function clearTimers() {
+      timers.forEach((id) => window.clearTimeout(id));
+      timers = [];
+    }
+
+    function reset() {
+      clearTimers();
+      lines.forEach((line) => {
+        line.textContent = '';
+        line.classList.remove('is-typing');
+      });
+    }
+
+    function typeAll() {
+      clearTimers();
+      if (reduceMotion) {
+        lines.forEach((line) => {
+          line.textContent = line.dataset.text || '';
+        });
+        return;
+      }
+
+      let delay = 0;
+      lines.forEach((line, index) => {
+        const text = line.dataset.text || '';
+        const lineStart = delay;
+        line.classList.add('is-typing');
+
+        for (let i = 1; i <= text.length; i += 1) {
+          const id = window.setTimeout(() => {
+            line.textContent = text.slice(0, i);
+          }, lineStart + i * speed);
+          timers.push(id);
+        }
+
+        delay += text.length * speed + speed * 6;
+        const endId = window.setTimeout(() => {
+          line.classList.remove('is-typing');
+          if (index === lines.length - 1) {
+            card.classList.add('is-complete');
+          }
+        }, delay);
+        timers.push(endId);
+      });
+    }
+
+    function start() {
+      if (started) return;
+      started = true;
+      typeAll();
+    }
+
+    reset();
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              start();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.25 },
+      );
+      observer.observe(card);
+    } else {
+      start();
+    }
+
+    if (replayBtn instanceof HTMLButtonElement) {
+      replayBtn.addEventListener('click', () => {
+        card.classList.remove('is-complete');
+        reset();
+        typeAll();
+      });
+    }
+  })();
+</script>
