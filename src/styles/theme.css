@@ -492,6 +492,13 @@
   display: none;
 }
 
+/* ── 只有一条统计时收窄居中 ── */
+.stats-grid > :only-child {
+  grid-column: 1 / -1;
+  max-width: 320px;
+  margin-inline: auto;
+}
+
 /* ── 只有一条纪念日时占满一行，避免左侧半张卡 ── */
 .anniversary-cards > :only-child {
   grid-column: 1 / -1;

@@ -60,8 +60,8 @@ function shouldShowStat(statKey: string, sections: StatsSectionState): boolean {
     if (statKey === 'marriageDays' && !(config.marriageDate || '').trim()) return false;
     if (statKey === 'visitCount' && !sections.visitCount) return false;
   if (statKey === 'milestoneCount' && !sections.timeline) return false;
-  if (statKey === 'photoCount' && !sections.photoWall) return false;
-  if (statKey === 'wishCompletion' && !sections.wishes) return false;
+  if (statKey === 'photoCount' && (!sections.photoWall || !config.photos?.length)) return false;
+  if (statKey === 'wishCompletion' && (!sections.wishes || !config.wishes?.length)) return false;
   return true;
 }
 
@@ -207,14 +207,14 @@ const statsPayload = {
     return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
   }
 
-  function shouldShowStat(statKey, sections) {
+  function shouldShowStat(statKey, sections, payload) {
     // 计时器已经展示了相恋/婚姻时长，打开计时器时不再重复
     if ((statKey === 'loveDays' || statKey === 'marriageDays') && sections.timers) return false;
-    if (statKey === 'marriageDays' && !(config.marriageDate || '').trim()) return false;
+    if (statKey === 'marriageDays' && !String(payload.marriageDate || '').trim()) return false;
     if (statKey === 'visitCount' && !sections.visitCount) return false;
     if (statKey === 'milestoneCount' && !sections.timeline) return false;
-    if (statKey === 'photoCount' && !sections.photoWall) return false;
-    if (statKey === 'wishCompletion' && !sections.wishes) return false;
+    if (statKey === 'photoCount' && (!sections.photoWall || !payload.photosCount)) return false;
+    if (statKey === 'wishCompletion' && (!sections.wishes || !(payload.wishes || []).length)) return false;
     return true;
   }
 
@@ -231,7 +231,7 @@ const statsPayload = {
       { key: 'wishCompletion', label: ui.wishCompletion || '愿望完成率', value: wishRate, icon: '✓' },
       { key: 'visitCount', label: ui.visitCount || '本机访问次数', value: visitCount, icon: '⌂', note: visitNote },
     ];
-    return rawStats.filter((stat) => shouldShowStat(stat.key, payload.sectionState));
+    return rawStats.filter((stat) => shouldShowStat(stat.key, payload.sectionState, payload));
   }
 
   function mapManualStats(items) {

@@ -87,7 +87,7 @@ const sectionOrder = resolveSectionOrder(CONFIG);
     <Footer config={CONFIG} messages={messages} />
   </main>
 
-  {sections.photoWall !== false && <PhotoWall config={CONFIG} messages={messages} />}
+  {sections.photoWall !== false && CONFIG.photos?.length > 0 && <PhotoWall config={CONFIG} messages={messages} />}
   <FloatingActions config={CONFIG} messages={messages} />
   {CONFIG.music.enabled && <Music config={CONFIG} messages={messages} />}
   <EasterEgg config={CONFIG} />

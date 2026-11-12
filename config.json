@@ -38,24 +38,7 @@
     "从十点开始的那一天",
     "我们不赶时间，慢慢走"
   ],
-  "photos": [
-    {
-      "url": "/photos/demo-01.jpg",
-      "caption": "读过的书"
-    },
-    {
-      "url": "/photos/demo-02.jpg",
-      "caption": "一起走过的那条街"
-    },
-    {
-      "url": "/photos/demo-03.jpg",
-      "caption": "桌上的两只杯子"
-    },
-    {
-      "url": "/photos/demo-04.jpg",
-      "caption": "黄昏时的车站"
-    }
-  ],
+  "photos": [],
   "timers": [
     {
       "label": "在一起",
@@ -76,24 +59,7 @@
     }
   ],
   "anniversaryCountdownThreshold": 15,
-  "wishes": [
-    {
-      "text": "一起看一次海",
-      "done": false
-    },
-    {
-      "text": "学会做对方爱吃的那道菜",
-      "done": true
-    },
-    {
-      "text": "把这一年的照片做成一本相册",
-      "done": false
-    },
-    {
-      "text": "在同一个城市看一次雪",
-      "done": false
-    }
-  ],
+  "wishes": [],
   "letter": {
     "enabled": true,
     "title": "一封没有寄出的信",

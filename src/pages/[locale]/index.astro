@@ -76,7 +76,7 @@ const config = CONFIG;
     <Footer config={config} messages={messages} />
   </main>
 
-  {config.sections?.photoWall !== false && <PhotoWall config={config} messages={messages} />}
+  {config.sections?.photoWall !== false && config.photos?.length > 0 && <PhotoWall config={config} messages={messages} />}
   <FloatingActions config={config} messages={messages} />
   {config.music.enabled && <Music config={config} messages={messages} />}
   <EasterEgg config={config} />

@@ -88,11 +88,15 @@
 - `includeDefaultAnniversaries`：`true` 时额外补上根据 `loveDate`/`marriageDate` 推出来的默认纪念日。
 - 当天会触发全屏庆祝动画。
 
+`photos` 为空数组时照片墙整块不渲染（含标题），"照片回忆"统计项也自动隐藏；加入照片后自动出现。
+
 ### wishes（愿望清单）
 
 ```json
 [{ "text": "一起看一次海", "done": false }]
 ```
+
+空数组时不渲染愿望清单，"愿望完成率"统计项一并隐藏。
 
 ### photos（照片墙）
 
